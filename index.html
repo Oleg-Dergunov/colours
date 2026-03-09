@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oleg Dergunov 76522 || Colours</title>
     <style>
-        
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+#bigSection {
+    background-color: #dbf4e4; 
+    min-height: 100vh;
+    padding: 40px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#bigSection h2 {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+#box-colour {
+    background: #008000;
+    color: #000;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+#btn-change-colour {
+    margin-top: 25px;
+    padding: 12px 25px;
+    font-size: 18px;
+    background-color: #0000ff;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#btn-change-colour::before {
+    content: "🖌️";
+    font-size: 20px;
+}
+
     </style>
 </head>
+
 <body>
-    
+
+    <section id="bigSection">
+        <h2>BackgroundIColour <span id="box-colour">#dbf4e4</span></h2>
+        <button id="btn-change-colour">Click me</button>
+
+    </section>
+
+    <script>
+        const btnChangeColour = document.getElementById('btn-change-colour');
+        const boxDisplay = document.getElementById('box-colour');
+        const bigSection = document.getElementById('bigSection');
+
+        btnChangeColour.addEventListener('click', () => {
+            const arrHex = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+            let  strHexColour = '#';
+            for (let i = 0; i<6; i++) {
+                strHexColour += arrHex[getRandomNumber(arrHex.length)];
+            }
+            boxDisplay.innerText = strHexColour;
+            bigSection.style.backgroundColor = strHexColour;
+        });
+
+        // Generate random number in range from 0 to max-1
+        function getRandomNumber(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
 </body>
+
 </html>
